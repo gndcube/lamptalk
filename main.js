@@ -12,10 +12,12 @@ var Talk=class{
   constructor(data){
     this.text=data[0]; //教師データ
     this.answer=data[1]; //ランプのセリフ
-    this.text_array=this.text.split(""); //教師データの文字配列
     this.text_trigram=[]; //教師データのtrigram
     this.tf_idf=[]; //tf_idf
     var i,l;
+
+    var teaching_text=this.text+this.answer;
+    this.text_array=teaching_text.split(""); //教師データの文字配列
 
     //教師データからtrigramへ変換
     for(i=0,l=this.text_array.length;i<l;++i){
@@ -97,6 +99,7 @@ window.onload=function(){
     talk_data[i].setTfidf(tf_idf);
   }
 
+  //console.log(teaching_data.length);
 };
 
 var talk=function(){
